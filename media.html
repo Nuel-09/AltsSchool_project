@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me - Media Showcase</title>
+  </head>
+  <body>
+    <h1>Discover More About Me </h1>
+    <p>[ <em>This is just a template</em> ]</p>
+    <p>
+      Welcome! Here is a multimedia introduction to who I am and what I stand
+      for.
+    </p>
+
+    <h2>Responsive Picture</h2>
+    <picture>
+      <source srcset="me-mobile.jpg" media="(max-width: 600px)" />
+      <source srcset="me-tablet.jpg" media="(max-width: 1024px)" />
+      <source srcset="me-laptop.jpg" media="(min-width: 1025px)" />
+      <img
+        src="me-laptop.jpg"
+        alt="A photo of me smiling and working on a laptop"
+      />
+    </picture>
+    <p>
+      <em>This image adapts to your device for the best experience.</em>
+    </p>
+
+    <h2>Audio Message</h2>
+    <audio controls>
+      <source src="intro.mp3" type="audio/mpeg" />
+      <source src="intro.ogg" type="audio/ogg" />
+      Your browser does not support the audio element.
+    </audio>
+    <p>
+      <em>Listen to a short audio about my journey.</em>
+    </p>
+
+    <h2>Video Introduction</h2>
+    <video width="320" height="240" controls>
+      <source src="about-me.mp4" type="video/mp4" />
+      <source src="about-me.webm" type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
+    <p>
+      <em>Watch my video introduction.</em>
+    </p>
+
+    <h2>Embedded PDF</h2>
+    <object data="resume.pdf" type="application/pdf" width="400" height="500">
+      <p>
+        Your browser does not support PDFs.
+        <a href="resume.pdf">Download my resume</a>.
+      </p>
+    </object>
+
+    <h2>SVG Illustration</h2>
+    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="blue"
+        stroke-width="4"
+        fill="lightblue"
+      />
+      <text
+        x="50%"
+        y="55%"
+        text-anchor="middle"
+        fill="navy"
+        font-size="16"
+        font-family="Arial"
+        dy=".3em"
+      >
+        Me
+      </text>
+    </svg>
+    <p>
+      <em>This SVG represents my creativity and passion for tech.</em>
+    </p>
+
+    <p>
+      <a href="index.html">Back to</a>
+    </p>
+  </body>
+</html>
