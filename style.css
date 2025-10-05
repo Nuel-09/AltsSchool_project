@@ -1,0 +1,235 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #1a1919;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+#mobile-container {
+  /* responsive sizing */
+  width: min(92vw, 430px);
+  aspect-ratio: 430 / 932;
+  max-height: calc(100vh - 40px);
+  border: 6px solid #000000fd;
+  border-radius: 36px;
+  box-shadow: 0 0 0 2px rgba(252, 249, 249, 0.524),
+    0 2px 8px rgba(48, 44, 44, 0.158);
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* small-screen tweaks */
+@media (max-width: 420px) {
+  #mobile-container {
+    border-width: 12px;
+    border-radius: 28px;
+  }
+}
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #5a3fa0 0%, #8a63d1 55%, #9f7be0 100%);
+  overflow: hidden;
+}
+
+/* Added white curved bottom that makes a sharp separation */
+.screen::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6%; /* pull it down slightly so curve goes off-canvas */
+  height: 52%; /* controls how tall the white area is */
+  background: #fff;
+  /* large horizontal radius + smaller vertical radius -> pronounced curve */
+  border-top-left-radius: 100% 30%;
+  border-top-right-radius: 100% 30%;
+  /* remove shadow for a crisp edge */
+  box-shadow: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* content should be above the white shape */
+.screen .content {
+  position: relative;
+  z-index: 2;
+  margin: 12px;
+}
+
+.content h1 {
+  color: rgb(225, 221, 227);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.8em;
+}
+/* styling the stopwatch display */
+.stopwatch-display {
+  width: 200px;
+  height: 200px;
+  font-size: 2em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  left: 100px;
+  border-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.start-stop-btn {
+  position: absolute;
+  top: 290px;
+  left: 65%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #5a3fa0;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.reset-btn {
+  position: absolute;
+  top: 290px;
+  left: 38%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #5a3fa0;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.start-stop-btn:hover,
+.reset-btn:hover {
+  background-color: #7a5fa0;
+}
+.start-stop-btn:active,
+.reset-btn:active {
+  background-color: #3a1fa0;
+}
+.start-stop-btn:focus,
+.reset-btn:focus {
+  outline: 2px solid #b073d3;
+  outline-offset: 2px;
+}
+
+/* styling the toggle button */
+.toggle-btn {
+  --toggle-width: 70px;
+  --toggle-height: 32px;
+  --toggle-bg-off: #d8d8d8;
+  --toggle-bg-on: #5a3fa0;
+  --toggle-knob: #75408e;
+
+  display: inline-grid;
+  place-items: center;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  padding: 4px;
+  background: var(--toggle-bg-off);
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  /* place at top-right of the phone container */
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 40;
+  transition: background 180ms ease, box-shadow 180ms ease;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.toggle-btn .knob {
+  width: calc(var(--toggle-height) - 8px);
+  height: calc(var(--toggle-height) - 8px);
+  background: var(--toggle-knob);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  transform: translateX(0);
+}
+
+/* ON state: change background and move knob to the right */
+.toggle-btn.is-on {
+  background: var(--toggle-bg-on);
+  --toggle-knob: #ffffff;
+}
+
+.toggle-btn.is-on .knob {
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
+}
+
+/* focus / keyboard accessibility */
+.toggle-btn:focus {
+  outline: 2px solid #b073d3;
+  outline-offset: 4px;
+}
+
+/* disabled appearance */
+.toggle-btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .toggle-btn,
+  .toggle-btn .knob {
+    transition: none !important;
+  }
+}
+
+/* utility sizes */
+.toggle-btn.small {
+  --toggle-width: 40px;
+  --toggle-height: 22px;
+}
+.toggle-btn.large {
+  --toggle-width: 72px;
+  --toggle-height: 40px;
+}
+
+/* about section and it's content */
+aside {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 40px;
+}
+
+aside .about-section {
+  padding: 10px;
+  font-size: 0.9em;
+  color: #ece8e8;
+  line-height: 1.4;
+  max-width: 180px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+aside .about-page {
+  padding: 10px;
+  font-size: 0.9em;
+  color: #aeaeae;
+  line-height: 1.4;
+  max-width: 180px;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  display: none;
+}
