@@ -6,29 +6,35 @@ body {
 }
 
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
 
 .top-section {
     display: flex;
-    grid-template-columns: 160px 1fr;
     align-items: center;
     background: #b3d8fd;
     padding: 24px;
     margin-bottom: 12px;
     height: 50vh;
-    justify-content: space-between;
-    text-wrap: wrap;
+    justify-content: space-evenly;
+}
+.about {
+    padding: 0 24px;
+    margin-right: auto;
+    flex-direction: column;
 }
 
 .profile-pic {
-    width: 300px;
+    width: 700px;
     height: 300px;
     background: #fff;
     border-radius: 50%;
     border: 5px solid #e06c9f;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   
 }
 
 .profile-pic img {
