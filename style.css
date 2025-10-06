@@ -25,11 +25,22 @@ body {
 }
 
 /* small-screen tweaks */
-@media (max-width: 420px) {
+@media (max-width: 425px) {
   #mobile-container {
     border-width: 12px;
     border-radius: 28px;
   }
+  aside .about-section{
+    display: none;
+  }
+  body .stopwatch-display {
+    left: 70px;
+  }
+  body button.toggle-btn {
+    top: 12px;
+    right: 12px;
+  }
+    
 }
 .screen {
   position: relative;
